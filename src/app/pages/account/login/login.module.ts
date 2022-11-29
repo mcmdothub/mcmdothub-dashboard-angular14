@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AccountService } from '../account.service';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
@@ -18,6 +21,9 @@ import { FormsModule } from '@angular/forms';
         //title: 'Login page'
       }
     ])
+  ],
+  providers: [
+    AccountService
   ]
 })
 export class LoginModule { }
