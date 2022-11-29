@@ -1,27 +1,36 @@
 # McmdothubDashboardAngular14
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+- Source:
+  https://www.youtube.com/watch?v=6b71XfxQiS0&list=PLASrVOHlq9W8LaDG4tfjntw5P_dCtkTWx&index=36
 
-## Development server
+# Create account component
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g c core/components/layouts/account
+CREATE src/app/core/components/layouts/account/account.component.html (22 bytes)
+CREATE src/app/core/components/layouts/account/account.component.spec.ts (606 bytes)
+CREATE src/app/core/components/layouts/account/account.component.ts (280 bytes)
+CREATE src/app/core/components/layouts/account/account.component.scss (0 bytes)
+UPDATE src/app/app.module.ts (503 bytes)
 
-## Code scaffolding
+# Create dashboard component
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g c core/components/layouts/dashboard
+CREATE src/app/core/components/layouts/dashboard/dashboard.component.html (24 bytes)
+CREATE src/app/core/components/layouts/dashboard/dashboard.component.spec.ts (620 bytes)
+CREATE src/app/core/components/layouts/dashboard/dashboard.component.ts (288 bytes)
+CREATE src/app/core/components/layouts/dashboard/dashboard.component.scss (0 bytes)
+UPDATE src/app/app.module.ts (621 bytes)
 
-## Build
+# Create login module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m pages/account/login
+CREATE src/app/pages/account/login/login.module.ts (191 bytes)
 
-## Running unit tests
+# Create login component
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g c pages/account/login
+CREATE src/app/pages/account/login/login.component.html (20 bytes)
+CREATE src/app/pages/account/login/login.component.spec.ts (592 bytes)
+CREATE src/app/pages/account/login/login.component.ts (272 bytes)
+CREATE src/app/pages/account/login/login.component.scss (0 bytes)
+UPDATE src/app/pages/account/login/login.module.ts (265 bytes)
