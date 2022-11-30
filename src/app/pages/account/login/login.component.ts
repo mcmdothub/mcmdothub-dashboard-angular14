@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { ILogin } from '../models/login.interface';
 
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   sending: boolean = false;
 
   constructor(
-    private _accountContext: AccountService
+    private _accountContext: AccountService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('rememberMe', `${this.loginInput.rememberMe}`)
       } else {
         localStorage.removeItem('rememberMe');
+      }
+
+      // Redirect user to dashboard
+      if(apiResponse && apiResponse.id) {
+        localStorage.setItem('myToken', apiResponse.data);
+        this._router.navigate(['dashboard']);
       }
     })
   }

@@ -34,3 +34,20 @@ CREATE src/app/pages/account/login/login.component.spec.ts (592 bytes)
 CREATE src/app/pages/account/login/login.component.ts (272 bytes)
 CREATE src/app/pages/account/login/login.component.scss (0 bytes)
 UPDATE src/app/pages/account/login/login.module.ts (265 bytes)
+
+AM RAMAS LA PARTE 6
+https://www.youtube.com/watch?v=ARNgZREs65I&list=PLASrVOHlq9W8LaDG4tfjntw5P_dCtkTWx&index=31S
+
+# Create summary module
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m pages/dashboard/summary
+CREATE src/app/pages/dashboard/summary/summary.module.ts (193 bytes)
+
+# Create dsummary component
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g c pages/dashboard/summary
+CREATE src/app/pages/dashboard/summary/summary.component.html (22 bytes)
+CREATE src/app/pages/dashboard/summary/summary.component.spec.ts (606 bytes)
+CREATE src/app/pages/dashboard/summary/summary.component.ts (280 bytes)
+CREATE src/app/pages/dashboard/summary/summary.component.scss (0 bytes)
+UPDATE src/app/pages/dashboard/summary/summary.module.ts (273 bytes)
