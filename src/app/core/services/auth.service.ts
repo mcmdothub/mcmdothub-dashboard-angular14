@@ -33,8 +33,9 @@ export class AuthService {
     };
 
     // returns an Observable with Object
-    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details')
+    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
     .pipe(map((apiResponse: any) => {
+      //apiResponse.data.profilePic = 'https://ytc.beginner2expert.com/angular14/api/' + apiResponse.data.profilePic;
       return apiResponse.data;
     }))
   }
