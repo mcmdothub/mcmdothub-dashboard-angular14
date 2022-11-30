@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { ILogin } from '../models/login.interface';
 
 @Component({
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   sending: boolean = false;
 
   constructor(
-    private _accountContext: AccountService,
+    private _accountContext: AuthService,
     private _router: Router
   ) { }
 
@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
     // after fylling username & password & press ENTER
     this.sending = true;
 
+    // if i dont put: apiResponse:any will give an error for apiResponse.id & apiResponse.data => "Property 'data' does not exist on type 'Object'.ts(2339)"
     this._accountContext.login(this.loginInput)
-    .subscribe(apiResponse => {
+    .subscribe((apiResponse:any) => {
       console.warn(apiResponse);
       this.apiResponse = apiResponse;
       this.sending = false;
