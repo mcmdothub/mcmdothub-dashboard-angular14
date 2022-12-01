@@ -1,8 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { delay, map } from "rxjs/operators";
 import { AppConstants } from "src/app/constants";
 import { ILogin } from "../../pages/account/models/login.interface";
+import { IAPIResponse } from "../models";
 import { IUser } from "../models/user.interface";
 
 // Because i want this instance AuthService to be only 1
@@ -43,8 +45,16 @@ export class AuthService {
   942001 / B2e@21 - Supervisor
   574040 / B2e@21 - Admin
   */
-  login(input: ILogin) {
-    return this._httpClient.post('https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login', input);
+  login(input: ILogin): Observable<IAPIResponse> {
+    // after adding Observable<IAPIResponse>
+    // will have this error: "Type 'Observable<Object>' is not assignable to type 'Observable<IAPIResponse>'"
+    // we will fix it by adding pipe to map the model
+    return this._httpClient.post('https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login', input
+    ).pipe(map(apiResponse => {
+      const model = apiResponse as IAPIResponse;
+
+      return model;
+    }));
   }
 
   // method to fetch login user details

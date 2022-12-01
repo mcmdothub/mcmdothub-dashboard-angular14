@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   sending: boolean = false;
 
   constructor(
-    private _accountContext: AuthService,
+    private _authContext: AuthService,
     private _router: Router
   ) { }
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.sending = true;
 
     // if i dont put: apiResponse:any will give an error for apiResponse.id & apiResponse.data => "Property 'data' does not exist on type 'Object'.ts(2339)"
-    this._accountContext.login(this.loginInput)
+    this._authContext.login(this.loginInput)
     .subscribe((apiResponse:any) => {
       console.warn(apiResponse);
       this.apiResponse = apiResponse;
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
       // Redirect user to dashboard
       if(apiResponse && apiResponse.id) {
-        this._accountContext.token = apiResponse.data;
+        this._authContext.token = apiResponse.data;
         localStorage.setItem(AppConstants.myTokenKey, apiResponse.data);
         this._router.navigate(['dashboard']);
       }
