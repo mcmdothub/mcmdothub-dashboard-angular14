@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
 
   // Inject AuthService to Dashboard layoit component and call LoadUser
   constructor(
-    public authContext: AuthService
+    public authContext: AuthService,
+    private _router: Router
   ) {
     //this.user$ = this._authContext.loadUser();
   }
@@ -22,4 +24,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    this.authContext.logout().subscribe((apiResponse: any) => {
+      // succesfully logout if id>0
+      if(apiResponse && apiResponse.id > 0) {
+        localStorage.removeItem('myToken');
+        this._router.navigate(['/']);
+      }
+    })
+  }
 }

@@ -8,6 +8,14 @@ import { IUser } from "../models/user.interface";
 @Injectable({providedIn: 'root'})
 
 export class AuthService {
+
+  // private variable _headers
+  private _headers = {
+    headers: {
+      'Authorization': 'Bearer' + localStorage.getItem('myToken')
+    }
+  };
+
   private _user: IUser;
 
   // create a getter for this
@@ -31,15 +39,16 @@ export class AuthService {
   // method to fetch login user details
   loadUser() {
     // prepare an http header , the header is an object {}
-    const headers = {
-      // this object will have an Authorization property Bearer pkus the token stored allready in the browser localstorage
-      headers: {
-        'Authorization': 'Bearer' + localStorage.getItem('myToken')
-      }
-    };
+    // this object will have an Authorization property Bearer pkus the token stored allready in the browser localstorage
+    // const headers = {
+    //   headers: {
+    //     'Authorization': 'Bearer' + localStorage.getItem('myToken')
+    //   }
+    // };
+    // after declare it as private _headers we just call it at the end "this._headers"
 
     // returns an Observable with Object
-    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
+    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', this._headers)
     .pipe(delay(2000))
     .pipe(map((apiResponse: any) => {
       //apiResponse.data.profilePic = 'https://ytc.beginner2expert.com/angular14/api/' + apiResponse.data.profilePic;
@@ -53,5 +62,9 @@ export class AuthService {
 
       return this._user;
     }))
+  }
+
+  logout() {
+    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/logout', this._headers);
   }
 }
