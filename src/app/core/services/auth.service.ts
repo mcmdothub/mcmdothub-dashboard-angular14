@@ -2,15 +2,23 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { ILogin } from "../../pages/account/models/login.interface";
+import { IUser } from "../models/user.interface";
 
 // Because i want this instance AuthService to be only 1
 @Injectable({providedIn: 'root'})
 
 export class AuthService {
+  private _user: IUser;
+
+  // create a getter for this
+  public get user() {
+    return this._user;
+  }
+
   constructor(
     private _httpClient: HttpClient
   ) {
-
+    this._user = { firstName: '', profilePicPath: '', role: '', userCode: ''};
   }
 
   /*
@@ -36,7 +44,15 @@ export class AuthService {
     return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
     .pipe(map((apiResponse: any) => {
       //apiResponse.data.profilePic = 'https://ytc.beginner2expert.com/angular14/api/' + apiResponse.data.profilePic;
-      return apiResponse.data;
+      //return apiResponse.data;
+
+      this._user = {
+        ...apiResponse.data,
+        profilePicPath: apiResponse.profilePic,
+        role: apiResponse.roleName,                         // when different name in the interface respect what it comes from http response "roleName" => we have to map "role: apiResponse.roleName"
+      };
+
+      return this._user;
     }))
   }
 }
