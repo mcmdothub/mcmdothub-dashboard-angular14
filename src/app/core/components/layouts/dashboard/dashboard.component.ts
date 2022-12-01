@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class DashboardComponent implements OnInit {
 
   // Assign the observable to user$ variable and subscribe inside template
-  user$: Observable<any>;
+  //user$: Observable<any>;
 
   // Inject AuthService to Dashboard layoit component and call LoadUser
   constructor(
-    private _authContext: AuthService
+    public authContext: AuthService
   ) {
-    this.user$ = this._authContext.loadUser();
+    //this.user$ = this._authContext.loadUser();
   }
 
   ngOnInit(): void {
