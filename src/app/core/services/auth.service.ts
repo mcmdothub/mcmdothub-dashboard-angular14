@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { delay, map } from "rxjs/operators";
+import { AppConstants } from "src/app/constants";
 import { ILogin } from "../../pages/account/models/login.interface";
 import { IUser } from "../models/user.interface";
 
@@ -12,7 +13,7 @@ export class AuthService {
   // private variable _headers
   private _headers = {
     headers: {
-      'Authorization': 'Bearer' + localStorage.getItem('myToken')
+      'Authorization': 'Bearer' + localStorage.getItem(AppConstants.myTokenKey)
     }
   };
 
@@ -34,7 +35,7 @@ export class AuthService {
 
   constructor(private _httpClient: HttpClient) {
     this._user = { firstName: '', profilePicPath: '', role: '', userCode: '' };
-    this._token = localStorage.getItem('myToken') || '';
+    this._token = localStorage.getItem(AppConstants.myTokenKey) || '';
   }
 
   /*

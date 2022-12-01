@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AppComponent } from 'src/app/app.component';
+import { AppConstants } from 'src/app/constants';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -28,7 +30,7 @@ export class DashboardComponent implements OnInit {
     this.authContext.logout().subscribe((apiResponse: any) => {
       // succesfully logout if id>0
       if(apiResponse && apiResponse.id > 0) {
-        localStorage.removeItem('myToken');
+        localStorage.removeItem(AppConstants.myTokenKey);
         this._router.navigate(['/']);
       }
     })
