@@ -56,3 +56,7 @@ UPDATE src/app/pages/dashboard/summary/summary.module.ts (273 bytes)
 
 PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m core
 CREATE src/app/core/core.module.ts (190 bytes)
+
+# Install Angular Material
+
+ng add @angular/material

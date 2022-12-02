@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../../core/services/auth.service';
+import { MaterialModule } from 'src/app/shared';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AuthService } from '../../../core/services/auth.service';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    MaterialModule,
     RouterModule.forChild([
       {
         path: '',

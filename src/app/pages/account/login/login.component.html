@@ -6,8 +6,6 @@
   </section>
 
   <section aria-describedby="Message" *ngIf="apiResponse.message">
-    <!-- <p class="text-danger">Invalid credentials!</p> -->
-    <!-- <p class="text-success">Login successfull, please wait to go inside dashboard!</p> -->
     <p
       [ngClass]="{
         'text-danger': apiResponse.id < 0,
@@ -20,36 +18,36 @@
 
   <section aria-describedby="Login inputs">
     <div class="form-floating">
-      <input
-        type="email"
-        class="form-control"
-        #emailRef="ngModel"
-        name="floatingInput"
-        [(ngModel)]="loginInput.userName"
-        placeholder="Enter user name..."
-        required
-      />
-      <label for="floatingInput">Username</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="email"
+          #emailRef="ngModel"
+          name="floatingInput"
+          [(ngModel)]="loginInput.userName"
+          placeholder="Enter user name..."
+          required
+        />
+      </mat-form-field>
 
       <p *ngIf="emailRef.errors && emailRef.touched" class="text-danger">
-        <span *ngIf="emailRef.errors['required']"
-          >Email field is required!</span
-        >
         <span *ngIf="emailRef.errors['pattern']">Invalid email address!</span>
       </p>
     </div>
     <div class="form-floating mt-3">
-      <input
-        type="password"
-        class="form-control"
-        #passwordRef="ngModel"
-        name="floatingPassword"
-        [(ngModel)]="loginInput.password"
-        placeholder="Enter password..."
-        required
-      />
-      <label for="floatingPassword">Password</label>
-
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          #passwordRef="ngModel"
+          name="floatingPassword"
+          [(ngModel)]="loginInput.password"
+          placeholder="Enter password..."
+          required
+        />
+      </mat-form-field>
       <p *ngIf="passwordRef.errors && passwordRef.touched" class="text-danger">
         <span *ngIf="passwordRef.errors['required']"
           >Email field is required!</span
@@ -60,8 +58,8 @@
     <div class="checkbox mb-3 mt-3">
       <label>
         <input
-          name="rememberme"
           type="checkbox"
+          name="remeberme"
           [(ngModel)]="loginInput.rememberMe"
           value="remember-me"
         />
@@ -70,7 +68,6 @@
     </div>
   </section>
 
-  <!-- If sending is true then "Please wait..." otherwise "Sign in"  -->
   <section aria-describedby="Button action">
     <button
       class="w-100 btn btn-lg btn-primary"
@@ -82,7 +79,7 @@
   </section>
 </form>
 
-<section aria-describedby="Navigation">
+<section aria-describedby="Navigation" class="text-center">
   <p class="mt-3">
     <a class="text-primary" routerLink="../forgot-password"
       >Forgot password ?</a
