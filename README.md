@@ -60,3 +60,29 @@ CREATE src/app/core/core.module.ts (190 bytes)
 # Install Angular Material
 
 ng add @angular/material
+
+# Create a custom library and publish to NPM repository (we choose the name of the library: "custom-library")
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g library custom-library
+CREATE projects/custom-library/karma.conf.js (1435 bytes)
+CREATE projects/custom-library/ng-package.json (163 bytes)
+CREATE projects/custom-library/package.json (193 bytes)
+CREATE projects/custom-library/README.md (1042 bytes)
+CREATE projects/custom-library/tsconfig.lib.json (333 bytes)
+CREATE projects/custom-library/tsconfig.lib.prod.json (240 bytes)
+CREATE projects/custom-library/tsconfig.spec.json (309 bytes)
+CREATE projects/custom-library/src/test.ts (767 bytes)
+CREATE projects/custom-library/src/public-api.ts (187 bytes)
+CREATE projects/custom-library/src/lib/custom-library.module.ts (278 bytes)
+CREATE projects/custom-library/src/lib/custom-library.component.spec.ts (649 bytes)
+CREATE projects/custom-library/src/lib/custom-library.component.ts (288 bytes)
+CREATE projects/custom-library/src/lib/custom-library.service.spec.ts (393 bytes)
+CREATE projects/custom-library/src/lib/custom-library.service.ts (142 bytes)
+
+# Automatically "angular.json" was modified and added "custom-library"
+
+# Add inside "package.json"
+
+"start:custom": "ng serve --project custom.library",
+"build:custom": "ng build --project custom.library",
+"watch:custom": "ng build:custom --watch",
