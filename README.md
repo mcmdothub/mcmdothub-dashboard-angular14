@@ -51,3 +51,8 @@ CREATE src/app/pages/dashboard/summary/summary.component.spec.ts (606 bytes)
 CREATE src/app/pages/dashboard/summary/summary.component.ts (280 bytes)
 CREATE src/app/pages/dashboard/summary/summary.component.scss (0 bytes)
 UPDATE src/app/pages/dashboard/summary/summary.module.ts (273 bytes)
+
+# Create core module
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m core
+CREATE src/app/core/core.module.ts (190 bytes)
