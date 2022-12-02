@@ -78,6 +78,9 @@ CREATE projects/custom-library/src/lib/custom-library.component.spec.ts (649 byt
 CREATE projects/custom-library/src/lib/custom-library.component.ts (288 bytes)
 CREATE projects/custom-library/src/lib/custom-library.service.spec.ts (393 bytes)
 CREATE projects/custom-library/src/lib/custom-library.service.ts (142 bytes)
+UPDATE angular.json (4371 bytes)
+UPDATE package.json (1156 bytes)
+UPDATE tsconfig.json (949 bytes)
 
 # Automatically "angular.json" was modified and added "custom-library"
 
@@ -86,3 +89,27 @@ CREATE projects/custom-library/src/lib/custom-library.service.ts (142 bytes)
 "start:custom": "ng serve --project custom.library",
 "build:custom": "ng build --project custom.library",
 "watch:custom": "ng build:custom --watch",
+
+# Test the new commands:
+
+- This will build a new folder: "dist"
+  PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> npm run build:custom
+
+# Create Shared module
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m shared
+CREATE src/app/shared/shared.module.ts (192 bytes)
+
+# Create customer component
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g c pages/dashboard/customer
+CREATE src/app/pages/dashboard/customer/customer.component.html (23 bytes)
+CREATE src/app/pages/dashboard/customer/customer.component.spec.ts (613 bytes)
+CREATE src/app/pages/dashboard/customer/customer.component.ts (284 bytes)
+CREATE src/app/pages/dashboard/customer/customer.component.scss (0 bytes)
+UPDATE src/app/app.module.ts (565 bytes)
+
+# Create customer module
+
+PS D:\GITHUB - Published\mcmdothub-dashboard-angular14> ng g m pages/dashboard/customer
+CREATE src/app/pages/dashboard/customer/customer.module.ts (194 bytes)

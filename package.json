@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:custom": "ng serve --project custom.library",
-    "build:custom": "ng build --project custom.library",
+    "start:custom": "ng serve --project custom-library",
+    "build:custom": "ng build --project custom-library",
     "watch:custom": "ng build:custom --watch",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^14.1.0",
     "@angular/cdk": "^14.2.0",

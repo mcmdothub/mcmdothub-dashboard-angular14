@@ -4,9 +4,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "custom-library": [
-        "dist/custom-library"
-      ]
+      "@custom-library": ["projects/custom-library/src/public-api.ts"],   // Local testing only
+      // "custom-library": [
+      //   "dist/custom-library"
+      // ]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
