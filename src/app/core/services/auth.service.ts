@@ -1,23 +1,18 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { delay, map } from "rxjs/operators";
-import { AppConstants } from "src/app/constants";
+import { AppConstants, Endpoint } from "src/app/constants";
 import { ILogin } from "../../pages/account/models/login.interface";
 import { IAPIResponse } from "../models";
 import { IUser } from "../models/user.interface";
+import { AppHttpService } from "./app-http.service";
 
 // Because i want this instance AuthService to be only 1
 @Injectable({providedIn: 'root'})
 
 export class AuthService {
 
-  // private variable _headers
-  private _headers = {
-    headers: {
-      'Authorization': 'Bearer' + localStorage.getItem(AppConstants.myTokenKey)
-    }
-  };
+
 
   private _user: IUser;
 
@@ -35,7 +30,7 @@ export class AuthService {
     this._token = value;
   }
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: AppHttpService) {
     this._user = { firstName: '', profilePicPath: '', role: '', userCode: '' };
     this._token = localStorage.getItem(AppConstants.myTokenKey) || '';
   }
@@ -49,7 +44,7 @@ export class AuthService {
     // after adding Observable<IAPIResponse>
     // will have this error: "Type 'Observable<Object>' is not assignable to type 'Observable<IAPIResponse>'"
     // we will fix it by adding pipe to map the model
-    return this._httpClient.post('https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login', input
+    return this._httpClient.post(Endpoint.login, input
     ).pipe(map(apiResponse => {
       const model = apiResponse as IAPIResponse;
 
@@ -69,7 +64,7 @@ export class AuthService {
     // after declare it as private _headers we just call it at the end "this._headers"
 
     // returns an Observable with Object
-    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', this._headers)
+    return this._httpClient.get('public/secure/user/basic/details')
     .pipe(delay(2000))
     .pipe(map((apiResponse: any) => {
       //apiResponse.data.profilePic = 'https://ytc.beginner2expert.com/angular14/api/' + apiResponse.data.profilePic;
@@ -86,6 +81,6 @@ export class AuthService {
   }
 
   logout() {
-    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/logout', this._headers);
+    return this._httpClient.get(Endpoint.logout);
   }
 }
