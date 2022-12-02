@@ -7,5 +7,9 @@
 
 <div>
   <!-- "lib-custom-library" comes from: selector inside "projects/custom-library/src/lib/custom-library.component.ts" -->
-  <!-- <lib-custom-library></lib-custom-library> -->
+  <!-- <lib-custom-library
+    [cols]="columnsToDisplay"
+    [rows]="(customers$ | async) || []"
+  >
+  </lib-custom-library> -->
 </div>

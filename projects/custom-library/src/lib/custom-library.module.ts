@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CustomLibraryComponent } from './custom-library.component';
+import { FormsModule } from '@angular/forms';
+import { CustomLibraryComponent } from './components/custom-library/custom-library.component';
+import { NGMatModule } from './ng-mat.module';
 
 
 
@@ -8,6 +11,9 @@ import { CustomLibraryComponent } from './custom-library.component';
     CustomLibraryComponent
   ],
   imports: [
+    CommonModule,
+    FormsModule,
+    NGMatModule
   ],
   exports: [
     CustomLibraryComponent
