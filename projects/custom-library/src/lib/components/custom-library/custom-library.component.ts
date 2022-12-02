@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -13,6 +14,7 @@ export class CustomLibraryComponent implements OnInit, OnChanges {
 
   mtDataSource: MatTableDataSource<any>;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor() {
     this.columnList = [];
@@ -24,6 +26,7 @@ export class CustomLibraryComponent implements OnInit, OnChanges {
     if (changes['rowList']?.currentValue.length) {
       this.mtDataSource = new MatTableDataSource(this.rowList);
       this.mtDataSource.sort = this.sort;
+      this.mtDataSource.paginator = this.paginator;
     }
   }
 
